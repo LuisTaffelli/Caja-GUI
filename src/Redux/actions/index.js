@@ -7,3 +7,12 @@ export function postProduct(payload) {
     return response
   }
 }
+
+export function getProducts(source) {
+  return function(dispatch){
+    return api.get(`/`)
+    .then(json =>{
+      dispatch({type: 'GET_PRODUCTS', payload: json.data})
+    })
+  }
+}

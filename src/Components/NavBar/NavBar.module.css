@@ -29,17 +29,15 @@
   justify-content: space-between;
   top: 1%;
   left: 2%;
-  margin: 12px auto;
-  width: 96%;
+  width: 100%;
   border-radius: 8px;
   padding: 12px;
-  color: rgba(255,231,239);
   background-color: rgba(156, 193, 248, 0.7);
 }
   .Nav-container a{
   display: flex;
   text-decoration: none;
-  color: rgba(255, 231, 239, 1.0)
+  color: rgba(105, 105, 130, 1.0)
 }
 
 }

@@ -15,6 +15,7 @@ router.get('/', async (req, res)=>{
 })
 
 router.post('/products', async (req, res)=>{
+	console.log('hola', req.body, req.query, req.params)
 	try{
 		const {
 			name,

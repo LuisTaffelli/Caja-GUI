@@ -8,6 +8,13 @@ export function postProduct(payload) {
   }
 }
 
+export function editProduct(payload){
+  return async function(dispatch) {
+    const response = await api.put('/products', payload)
+    return response
+  }
+}
+
 export function getProducts(source) {
   return function(dispatch){
     return api.get(`/`)

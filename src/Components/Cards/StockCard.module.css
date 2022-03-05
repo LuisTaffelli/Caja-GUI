@@ -1,0 +1,63 @@
+.Card-Container {
+    position: relative;
+    display: flex;
+    border-width: 0.05rem;
+    border-radius: 10%;
+    background-color: rgba(156,193,248,.5);
+    width: 280px;
+    margin: 0.75rem 0.75rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.54), 0 8px 24px 0 rgba(0,0,0,0.39);
+    flex-direction: row;
+    max-width: 28rem;
+}
+
+.Card-Column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}
+
+.Card-Column-inner{
+    display: flex;
+    margin: 20px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Card-Column-inner h3{
+    margin: 2px;
+}
+
+.Edit-container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    margin: 12px;
+}
+
+.Load-button{
+    top: 22%;
+    left: 30%;
+    position: absolute;
+    font-size: medium;
+    color: white;
+    border-color: rgba(255, 255, 255, .80);
+    border-radius: 12px;
+    background-color: transparent;
+    border-style: solid;
+}
+
+.Edit-button{
+    border-style: none;
+    background-color: transparent;
+}
+
+.Card-Column-inner input{
+    font-size: medium;
+    font-weight: 600;
+    color: black;
+    border-bottom-style: solid;
+    border-color: rgba(0, 0, 0, .4);
+}

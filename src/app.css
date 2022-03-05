@@ -5,7 +5,10 @@
 
 body, html {
   height: 99vh;
+  background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
 }
+
+input { border-style: none; background: transparent; outline: none; color: rgba(255, 255, 255, .4);}
 
 .App {
   text-align: center;

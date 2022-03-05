@@ -15,7 +15,6 @@ router.get('/', async (req, res)=>{
 })
 
 router.post('/products', async (req, res)=>{
-	console.log('hola', req.body, req.query, req.params)
 	try{
 		const {
 			name,
@@ -23,11 +22,18 @@ router.post('/products', async (req, res)=>{
 			stocktype,
 			unitprice
 		} = req.body
+		console.log(name, stock, stocktype, unitprice)
 		const new_product = await Product.findOrCreate({
-			name,
-			stock,
-			stocktype,
-			unitprice
+			where:{
+				name
+			},
+			defaults: {
+				stock,
+				stocktype,
+				unitprice
+			}
+			
+			
 		})
 		res.status(200).send({msg:'success', data: new_product})
 	}catch(e){

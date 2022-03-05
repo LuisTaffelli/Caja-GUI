@@ -15,17 +15,14 @@ const Component = ({toggle}) => {
     	setData(
     		{...data, [e.target.name] : e.target.value}
     		)
-    	console.log(data)
     }
   	
     const handleSubmit = (e)=>{
     	e.preventDefault()
     	axios.post(`http://localhost:9001/products`, data).then((msg)=>{
-    		console.log(msg)
         	setData({
     		name: '',
     		stock: '',
-    		stocktype: '',
     		unitprice: '',
     		})		
     	})

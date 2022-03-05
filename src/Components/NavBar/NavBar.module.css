@@ -1,13 +1,20 @@
 .Nav-container{
+  height: 40px;
   align-self: flex-start;
   display: flex;
+  justify-content: space-around;
+  top: 1%;
+  left: 2%;
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: rgba(67,139,60, 0.46);
+  align-content: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: rgba(156, 193, 248, 0.7);
-  color: rgba(255, 231, 239, 1.0);
 }
 
 .Nav-container button{
+  height: 24px;
   border-radius: 8px;
   border-style: solid;
   border-color: rgba(0, 0, 0, .4);
@@ -23,19 +30,29 @@
 
 @media screen and (min-width: 860px){
   .Nav-container{
-  align-self: flex-start;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  top: 1%;
-  left: 2%;
-  width: 100%;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-around;
+    top: 1%;
+    left: 2%;
+    height: 60px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: rgba(67,139,60, 0.46);
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+  .Nav-container button{
+  height: 24px;
   border-radius: 8px;
-  padding: 12px;
-  background-color: rgba(156, 193, 248, 0.7);
+  border-style: solid;
+  border-color: rgba(0, 0, 0, .4);
+  border-width: 1px;
 }
   .Nav-container a{
-  display: flex;
   text-decoration: none;
   color: rgba(105, 105, 130, 1.0)
 }

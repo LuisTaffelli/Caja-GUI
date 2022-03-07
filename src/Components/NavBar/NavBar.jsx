@@ -22,11 +22,6 @@ const Component = () => {
             </div>
             <div>
                 <button>
-                    <Link to='/sales'>Ventas del Mes</Link>
-                </button>
-            </div>
-            <div>
-                <button>
                     <Link to='/calculator'>Comparación proveedores </Link>
                 </button>
             </div>

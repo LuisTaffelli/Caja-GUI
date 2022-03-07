@@ -15,6 +15,23 @@ export function editProduct(payload){
   }
 }
 
+
+export function productSale(payload){
+  return async function(dispatch) {
+    const response = await api.put('/productsale', payload)
+    return response
+  }
+}
+
+export function trashProduct(payload){
+  return async function(dispatch) {
+    const response = await api.delete('/productsale', payload)
+    return response
+  }
+}
+
+
+
 export function getProducts(source) {
   return function(dispatch){
     return api.get(`/`)

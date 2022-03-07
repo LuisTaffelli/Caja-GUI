@@ -11,7 +11,7 @@ const Component = ({ name, stock, price, stocktype, sale, id }) => {
     }
 
     const onBlur = ()=>{
-        sale(name, quantity, price, stocktype, id)
+        sale(name, quantity, price, stocktype, id, stock)
     }
 
     return (

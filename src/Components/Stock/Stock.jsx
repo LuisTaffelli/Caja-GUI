@@ -15,6 +15,7 @@ const Component = () => {
 
     useEffect(()=>{
         dispatch(getProducts())
+        setData(DataRetrieve)
         return;
     },[flag, dispatch])
 
@@ -33,7 +34,6 @@ const Component = () => {
 
     const Reload = ()=>{
         setReload(!reload)
-        dispatch(getProducts())
     }
 
     const Searchbar = (Word)=>{

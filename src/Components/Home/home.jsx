@@ -2,7 +2,7 @@ import React from 'react';
 import Styles from './home.module.css'
 import {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from '../../Redux/actions/index.js';
+import { getProducts, productSale } from '../../Redux/actions/index.js';
 import Selector from '../Selector/Selector.jsx';
 import Card from './Card.jsx';
 import {AiOutlineClose} from 'react-icons/ai'
@@ -16,9 +16,9 @@ const Component = () => {
     const [SaleSum, setSaleSum] = useState([])
     const [TotalSum, setTotalSum] = useState(0)
     const [cards, setCards] = useState(null)
-    const [Data, setData] = useState(DataRetrieve)
     const dispatch = useDispatch()
     let DataRetrieve = useSelector((state)=>state.products.data)
+    const [Data, setData] = useState(DataRetrieve)
     
     useEffect(()=>{
         if(DataRetrieve === undefined){
@@ -36,7 +36,7 @@ const Component = () => {
     useEffect(()=>{
         TotalSale(SaleSum)
         return
-    },[TotalSum, SaleSum, TotalSale])
+    },[TotalSum, SaleSum])
 
 
     const onClick = (name)=>{
@@ -45,7 +45,6 @@ const Component = () => {
     }
 
     const saleArray = (info)=>{
-        console.log(info)
         setCards(info)    
     }
 
@@ -58,8 +57,17 @@ const Component = () => {
         return;
     }
 
+    const saleComplete = async ()=>{
+        await SaleSum.forEach((info)=>{
+            dispatch(productSale(info))
+        })
+        setCards(null)
+        setSaleSum([])
+        return
+    }
 
-    const Sale = (name, quantity, price, type, id)=>{
+
+    const Sale = (name, quantity, price, type, id, stock)=>{
         var auxboolean = false
         var auxIndex = 0
         SaleSum.forEach((info, index)=>{
@@ -72,13 +80,13 @@ const Component = () => {
             if(auxboolean){
                 let sum = quantity*price
                 let provArr = SaleSum
-                provArr[auxIndex] = {'product':name, 'price':sum}
+                provArr[auxIndex] = {'product':name, 'price':sum, 'id': id, 'stock': stock-quantity}
                 setSaleSum(provArr)
                 TotalSale(SaleSum)
                 return;
             }
             let sum = quantity*price
-            let sale = {'product':name, 'price':sum}
+            let sale = {'product':name, 'price':sum, 'id': id, 'stock': stock-quantity}
             setSaleSum([...SaleSum, sale])
             TotalSale(SaleSum)
         }
@@ -86,13 +94,13 @@ const Component = () => {
             if(auxboolean){
                 let sum = price*quantity/1000
                 let provArr = SaleSum
-                provArr[auxIndex] = {'product':name, 'price':sum}
+                provArr[auxIndex] = {'product':name, 'price':sum, 'id': id, 'stock': (stock)-(quantity/1000)}
                 setSaleSum(provArr)
                 TotalSale(SaleSum)
                 return;
             }
             let sum = price*quantity/1000
-            let sale = {'product':name, 'price':sum}
+            let sale = {'product':name, 'price':sum, 'id': id, 'stock': (stock)-(quantity/1000)}
             setSaleSum([...SaleSum, sale])
             TotalSale(SaleSum)
         }
@@ -124,6 +132,7 @@ const Component = () => {
                     <div className={Styles['Total-sale']}>
                         <GiArchiveRegister color='white' size={60}/>
                         <h2>Total: ${TotalSum}</h2>
+                        {cards ? <button onClick={saleComplete}>Terminar Compra</button> : null}
                     </div>
                 </div>
             </div>

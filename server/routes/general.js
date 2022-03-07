@@ -42,6 +42,37 @@ router.post('/products', async (req, res)=>{
 	}
 })
 
+router.put('/productsale', async (req,res)=>{
+	try{
+		const {
+			stock,
+			id
+		} = req.body
+
+		const updated_product = await Product.findOne({where: {id:id}})
+		updated_product.stock = stock
+		await updated_product.save()
+		res.status(200).send('update succeded')
+
+	}catch(e){
+		console.log(e)
+		res.status(400).send('Error')
+	}
+})
+
+
+router.delete('/products', async (req,res)=>{
+	try{
+		const {id} = req.body
+		const product_delete = await Product.findOne({where: {id:id}})
+		await product_delete.destroy()
+		res.status(200).send('Erase completed')
+	}catch(e){
+		console.log(e)
+		res.status(500).send('error')
+	}
+})
+
 
 router.put('/products', async (req,res)=>{
 	try{

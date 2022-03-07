@@ -24,6 +24,10 @@ $input-text-active: #BFD2FF;
 	background: $input-background;
 }
 
+.Can {
+  margin-top: 16px;
+}
+
 
 .CustomInput:after {
 	content: "";

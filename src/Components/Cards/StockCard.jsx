@@ -1,9 +1,9 @@
 import React from 'react';
 import {useState} from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { editProduct } from '../../Redux/actions/index.js';
+import { useDispatch} from "react-redux";
+import { editProduct, trashProduct } from '../../Redux/actions/index.js';
 import styles from './StockCard.module.css';
-import { FaRegEdit } from 'react-icons/fa'
+import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa'
 
 
 const Component = ({name, stock, price, stocktype, flag, id}) => {
@@ -42,6 +42,11 @@ const Component = ({name, stock, price, stocktype, flag, id}) => {
         })
     }
 
+    const trashData = ()=>{
+        dispatch(trashProduct(data.id))
+        return;
+    }
+
     const LoadData = ()=>{
         dispatch(editProduct({...data,
             "stock":Number(editstock),
@@ -68,7 +73,7 @@ const Component = ({name, stock, price, stocktype, flag, id}) => {
         </div>
         <div className={styles['Card-Column-inner']}>
             <h3>Tipo de Stock</h3>
-            <h3>{stocktype}</h3>
+            <h3>{stocktype==='kg' ? 'Kilos':'Unidades'}</h3>
         </div>
         <div className={styles['Card-Column-inner']}>
             <h3>Precio</h3>
@@ -84,6 +89,9 @@ const Component = ({name, stock, price, stocktype, flag, id}) => {
         className={styles['Edit-button']}>
             <FaRegEdit size={40} color={'white'}/>
         </button>
+
+        <FaRegTrashAlt className={styles['Can']} size={30} onClick={trashData} color={"rgba(255,49,85)"}/>
+
       </div>
       {edit ? <button className={styles['Load-button']}
       onClick={LoadData}>Cargar datos</button> : <></>}
